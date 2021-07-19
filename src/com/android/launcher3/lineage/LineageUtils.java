@@ -2,8 +2,6 @@ package com.android.launcher3.lineage;
 
 import android.app.KeyguardManager;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.hardware.biometrics.BiometricManager.Authenticators;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.CancellationSignal;
@@ -62,15 +60,6 @@ public class LineageUtils {
     public static boolean hasSecureKeyguard(Context context) {
         final KeyguardManager keyguardManager = context.getSystemService(KeyguardManager.class);
         return keyguardManager != null && keyguardManager.isKeyguardSecure();
-    }
-
-    public static boolean isPackageEnabled(Context context, String pkgName) {
-        try {
-            ApplicationInfo ai = context.getPackageManager().getApplicationInfo(pkgName, 0);
-            return ai.enabled;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
     }
 
 }
